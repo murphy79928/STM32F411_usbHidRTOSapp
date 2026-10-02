@@ -1,0 +1,31 @@
+# --- 忽略編譯產出與暫存檔 ---
+Debug/
+Release/
+bin/
+obj/
+*.o
+*.d
+*.su
+*.crf
+*.lnp
+*.lst
+*.axf
+*.htm
+*.dep
+*.build_log
+
+# --- 忽略目標燒錄檔 (視需求決定是否追蹤，通常不追蹤) ---
+*.hex
+*.bin
+*.elf
+
+# --- 忽略 IDE 個人化設定與快取 ---
+. can/
+*.txt.user
+*.depend
+*.layout
+.atmelstart/
+Firmware/
+*.uvgui.*
+*.uvguix.*
+.settings/
