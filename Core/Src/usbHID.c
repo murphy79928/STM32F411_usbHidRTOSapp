@@ -441,12 +441,14 @@ uint8_t CmI2CModeOn(uint8_t* dat)
 {
 	uint8_t *pt = dat;
 	uint16_t delayMS;
+	uint16_t checkaddr;
 	HAL_StatusTypeDef status;
 	uint8_t dummy;
 	uint8_t passflag = 0;
 
 
 	pt += GetU16(pt,&delayMS);
+    pt += GetU16(pt, &checkaddr);
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);	//Set High Volt Mode
 	EN_PWR;
 	osDelay(delayMS);
@@ -479,7 +481,7 @@ uint8_t CmI2CModeOn(uint8_t* dat)
 	status = HAL_I2C_Mem_Read(
 	&hi2c1,
 	(0x24 << 1),
-	0x3100,
+	checkaddr,
 	I2C_MEMADD_SIZE_16BIT,
 	I2cRxBuf,
 	1,
