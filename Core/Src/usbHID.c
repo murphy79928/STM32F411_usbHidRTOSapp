@@ -666,7 +666,7 @@ uint8_t CmReadParallel(uint8_t* dat)
 	uint8_t *pt=UsbTxbuf;
 
 	uint16_t rdData = CmReadPinData();
-
+	*pt++ =1;
 	pt += PutU16(pt,&rdData);
 	len = pt-UsbTxbuf;
 	UsbPktSendData(READ_PARA,len);
